@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>管理员界面 - MeNav</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    body {
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .config-section {
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .nav-list {
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .nav-item {
+      padding: 6px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-item:last-child {
+      border-bottom: none;
+    }
+    .nav-item button {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    .nav-item button:hover {
+      background-color: #c9302c;
+    }
+  </style>
+</head>
+<body>
+  <h1>管理员界面 - MeNav</h1>
+
+  <div class="config-section">
+    <h2>站点基本信息</h2>
+    <label for="site-title">站点标题</label>
+    <input type="text" id="site-title" />
+
+    <label for="site-favicon">Favicon 文件名</label>
+    <input type="text" id="site-favicon" />
+
+    <label for="site-footer">页脚信息</label>
+    <textarea id="site-footer" rows="3"></textarea>
+  </div>
+
+  <div class="config-section">
+    <h2>导航菜单</h2>
+    <div id="nav-list" class="nav-list"></div>
+    <button id="add-nav-item">添加导航项</button>
+  </div>
+
+  <button id="save-config">保存配置（下载YAML文件）</button>
+
+  <script src="/admin.js"></script>
+</body>
+</html>

@@ -888,29 +888,33 @@ function copyStaticFiles(config) {
 
 // 主函数
 function main() {
-    const config = loadConfig();
+  const config = loadConfig();
 
-    try {
-        // 确保dist目录存在
-        if (!fs.existsSync('dist')) {
-            fs.mkdirSync('dist', { recursive: true });
-        }
-
-        // 初始化Handlebars模板系统
-        loadHandlebarsTemplates();
-
-        // 使用generateHTML函数生成完整的HTML
-        const htmlContent = generateHTML(config);
-
-        // 生成HTML
-        fs.writeFileSync('dist/index.html', htmlContent);
-
-        // 复制静态文件
-        copyStaticFiles(config);
-    } catch (e) {
-        console.error('Error in main function:', e);
-        process.exit(1);
+  try {
+    // 确保dist目录存在
+    if (!fs.existsSync('dist')) {
+      fs.mkdirSync('dist', { recursive: true });
     }
+
+    // 初始化Handlebars模板系统
+    loadHandlebarsTemplates();
+
+    // 使用generateHTML函数生成完整的HTML
+    const htmlContent = generateHTML(config);
+
+    // 生成HTML
+    fs.writeFileSync('dist/index.html', htmlContent);
+
+    // 生成管理员页面HTML
+    const adminContent = renderTemplate('admin', config);
+    fs.writeFileSync('dist/admin.html', adminContent);
+
+    // 复制静态文件
+    copyStaticFiles(config);
+  } catch (e) {
+    console.error('Error in main function:', e);
+    process.exit(1);
+  }
 }
 
 main();
