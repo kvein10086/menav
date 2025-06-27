@@ -402,6 +402,17 @@ function prepareRenderData(config) {
     // 移除警告日志，数据处理逻辑保留
   }
 
+  // 添加管理员导航项（如果不存在）
+  const hasAdminNav = renderData.navigation.some(nav => nav.id === 'admin');
+  if (!hasAdminNav) {
+    renderData.navigation.push({
+      name: '管理员',
+      icon: 'fas fa-user-shield',
+      id: 'admin',
+      active: false
+    });
+  }
+
   // 添加序列化的配置数据，用于浏览器扩展
   renderData.configJSON = JSON.stringify({
     version: process.env.npm_package_version || '1.0.0',
