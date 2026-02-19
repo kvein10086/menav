@@ -453,6 +453,52 @@ npm run format
 
 </details>
 
+### Docker 部署（推荐）
+
+<details>
+<summary>点击展开</summary>
+
+MeNav 构建后是纯静态站点（`dist/`），仓库已内置 Docker 部署文件，可直接构建并运行。
+
+#### 方式一：Docker Compose（推荐）
+
+1. 准备配置（首次使用）：
+   - 按 [设置配置文件](#设置配置文件) 完成 `config/user/` 配置
+   - 如果要导入书签，可先把书签 HTML 放到 `bookmarks/` 目录
+
+2. 构建并启动：
+
+```bash
+docker compose up -d --build
+```
+
+默认访问地址：`http://localhost:8080`
+
+3. 常用可选参数（通过环境变量传入）：
+
+```bash
+MENAV_PORT=80 MENAV_ENABLE_SYNC=true MENAV_IMPORT_BOOKMARKS=true docker compose up -d --build
+```
+
+- `MENAV_PORT`：宿主机端口（默认 `8080`）
+- `MENAV_ENABLE_SYNC`：是否在镜像构建时联网执行 `sync-*`（默认 `false`，更稳定）
+- `MENAV_IMPORT_BOOKMARKS`：是否在镜像构建时执行 `npm run import-bookmarks`（默认 `false`）
+
+4. 更新站点：
+   - 修改配置或内容后，重新执行 `docker compose up -d --build`
+
+#### 方式二：直接使用 Docker 命令
+
+```bash
+docker build -t menav \
+  --build-arg MENAV_ENABLE_SYNC=false \
+  --build-arg MENAV_IMPORT_BOOKMARKS=false .
+
+docker run -d --name menav -p 8080:80 --restart unless-stopped menav
+```
+
+</details>
+
 ### 部署到服务器
 
 <details>
@@ -483,7 +529,7 @@ server {
     index index.html;
 
     location / {
-        try_files $uri $uri/ /index.html;
+        try_files $uri $uri/ /404.html;
     }
 }
 ```
