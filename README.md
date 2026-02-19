@@ -406,7 +406,7 @@ npm run format
 
 用于将生成的静态站点发布到 服务器 or CI/CD；本地构建见 [快速开始](#快速开始)。
 
-### 快速部署到GitHub Pages
+### 快速部署到GitHub Pages（推荐）
 
 <details>
 <summary>点击展开</summary>
@@ -453,14 +453,14 @@ npm run format
 
 </details>
 
-### Docker 部署（推荐）
+### Docker 部署（可选）
 
 <details>
 <summary>点击展开</summary>
 
 MeNav 构建后是纯静态站点（`dist/`），仓库已内置 Docker 部署文件，可直接构建并运行。
 
-#### 方式一：Docker Compose（推荐）
+#### 方式一：Docker Compose（常用）
 
 1. 准备配置（首次使用）：
    - 按 [设置配置文件](#设置配置文件) 完成 `config/user/` 配置
@@ -495,6 +495,25 @@ docker build -t menav \
   --build-arg MENAV_IMPORT_BOOKMARKS=false .
 
 docker run -d --name menav -p 8080:80 --restart unless-stopped menav
+```
+
+#### 使用 GHCR 预构建镜像（免本地构建）
+
+仓库已提供 `Docker Publish (GHCR)` 工作流（`.github/workflows/docker-ghcr.yml`）：
+
+- 推送到 `main` 时自动发布 `latest`
+- 推送 `v*` 标签时自动发布版本标签（如 `v1.3.0`）
+- 对外标签策略：仅 `latest` 与版本标签
+
+首次启用前请在仓库设置确认：
+
+1. `Settings -> Actions -> General -> Workflow permissions` 设为 `Read and write permissions`
+2. 在 `Packages` 中将镜像可见性设为 `Public`（否则匿名用户无法拉取）
+
+发布后，用户可直接拉取并运行（将 `<owner>/<repo>` 替换为你的仓库路径）：
+
+```bash
+docker run -d --name menav -p 8080:80 --restart unless-stopped ghcr.io/<owner>/<repo>:latest
 ```
 
 </details>
