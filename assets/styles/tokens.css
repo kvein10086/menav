@@ -65,17 +65,8 @@
   /* Semantic utility tokens */
   --overlay-backdrop: rgba(0, 0, 0, 0.5);
   --overlay-backdrop-strong: rgba(0, 0, 0, 0.6);
-  --neutral-code-bg: rgba(127, 127, 127, 0.15);
-  --neutral-code-block-bg: rgba(127, 127, 127, 0.08);
-  --neutral-table-alt-bg: rgba(127, 127, 127, 0.04);
-  --hierarchy-hover-bg: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.01)
-  );
-  --repo-stat-divider: rgba(255, 255, 255, 0.06);
   --dashboard-light-card-shadow: rgba(0, 0, 0, 0.08);
-  --dashboard-light-block-shadow: rgba(255, 255, 255, 0.15);
-  --dashboard-dark-block-shadow: rgba(0, 0, 0, 0.2);
+  --dashboard-block-shadow-dark: rgba(255, 255, 255, 0.15);
+  --dashboard-block-shadow-light: rgba(0, 0, 0, 0.2);
   --tooltip-fallback-bg: rgba(47, 48, 53, 0.95);
 }

@@ -49,6 +49,17 @@
   --gh-level-2-token: rgba(55, 178, 77, 0.55);
   --gh-level-3-token: rgba(55, 178, 77, 0.75);
   --gh-level-4-token: rgba(55, 178, 77, 0.95);
+
+  /* 深色主题：语义 token */
+  --hierarchy-hover-bg: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  --repo-stat-divider: rgba(255, 255, 255, 0.06);
+  --neutral-code-bg: rgba(127, 127, 127, 0.15);
+  --neutral-code-block-bg: rgba(127, 127, 127, 0.08);
+  --neutral-table-alt-bg: rgba(127, 127, 127, 0.04);
 }
 
 /* 暖灰 Notion 风格浅色主题 */
@@ -94,6 +105,13 @@ body.light-theme {
   --gh-level-2-token: #40c463;
   --gh-level-3-token: #30a14e;
   --gh-level-4-token: #216e39;
+
+  /* 浅色主题：语义 token */
+  --hierarchy-hover-bg: linear-gradient(145deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.015));
+  --repo-stat-divider: rgba(0, 0, 0, 0.06);
+  --neutral-code-bg: rgba(127, 127, 127, 0.18);
+  --neutral-code-block-bg: rgba(127, 127, 127, 0.1);
+  --neutral-table-alt-bg: rgba(127, 127, 127, 0.06);
 }
 
 /* 预加载主题 - 在 JS 完全加载前显示正确的主题 */
